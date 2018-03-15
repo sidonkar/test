@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MI Landing Page</title>
+
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link rel="stylesheet" href="css/cards.css" type="text/css">
+    <link rel="stylesheet" href="css/list.css" type="text/css">
+    <link rel="stylesheet" href="css/sidebar-search.css" type="text/css">
+    <link rel="stylesheet" href="css/tree-view.css" type="text/css">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+<body>
+<div class="header">
+    <h1 class="header-title">Test Arena</h1>
+    <!--<span class="button pull-right about-btn">About this!</span>-->
+</div>
+<div class="app-container" flex-row>
+    <div class="aside" flex-column none>
+        <div class="filter-title">Filters</div>
+        <div class="filters">
+            <!--<div class="trn-status">
+                <div>Transaction status</div>
+                <select>
+                    <option value="volvo">Completed</option>
+                    <option value="saab">Failed</option>
+                    <option value="mercedes">Running</option>
+                    <option value="audi">Waiting</option>
+                </select>
+            </div>-->
+            <div class="trn-type">
+                <div>Transaction Type</div>
+                <input type="radio" name="gender" value="male"> <span class="input-value">Both</span>
+                <br><input type="radio" name="gender" value="female"> <span class="input-value">Blocking</span>
+                <br><input type="radio" name="gender" value="other"> <span class="input-value">Non-Blocking</span>
+            </div>
+            <div class="trn-type">
+                <div>Operation Status</div>
+                <input type="radio" name="gender" value="male"> <span class="input-value">Skipped</span>
+                <br><input type="radio" name="gender" value="female"> <span class="input-value">Resumed</span>
+                <br><input type="radio" name="gender" value="other"> <span class="input-value">Aborted</span>
+                <br><input type="radio" name="gender" value="other"> <span class="input-value">Finished</span>
+                <br><input type="radio" name="gender" value="other"> <span class="input-value">Processed</span>
+            </div>
+            <div class="date-type trn-type">
+                <div>Transaction Date</div>
+                <span class="input-value">Started</span>
+                <input type="datetime-local" name="gender" value="other">
+                <br>
+                <span class="input-value">Finished</span>
+                <input type="datetime-local" name="gender" value="other">
+            </div>
+            <div class="trn-type">
+                <div>Queues</div>
+                <input type="checkbox" name="gender" value="male"> <span class="input-value">My Transaction Queue</span>
+                <br><input type="checkbox" name="gender" value="female"> <span class="input-value">Default Queue</span>
+                <br><input type="checkbox" name="gender" value="male"> <span class="input-value">Related  Queue</span>
+                <br><input type="checkbox" name="gender" value="female"> <span class="input-value">Pipe Queue</span>
+            </div>
+        </div>
+
+
+        <button class="submit" type="submit">Apply</button>
+    </div>
+    <div class="search-results" flex-column>
+        <div class="search-bar-with-options">
+            <div class="search-bar">
+                <input class='search-input' type="search" name="" id="" placeholder="Transaction #, Conversion # or Process Name">
+                <span class="search fa fa-search"></span>
+            </div>
+            <div class="search-options">
+                <span class="selected-option pull-right view" id="grouping" onclick="toggleView(undefined,'priority')">Group By <span class="fa fa-caret-down"></span></span>
+                <span class="status-filter">
+                    <span class="selected-option" id="running" onclick="toggleView('run')">Running (8)<!--<span class="fa fa-close"></span>--></span>
+                    <span class="selected-option" id="waiting" onclick="toggleView('wait')">Waiting (3)<!--<span class="fa fa-close"></span>--></span>
+                    <span class="selected-option" id="ready" onclick="toggleView('ready')">Ready (1)<!--<span class="fa fa-close"></span>--></span>
+                    <span class="selected-option" id="failed" onclick="toggleView('fail')">Failed (2)<!--<span class="fa fa-close"></span>--></span>
+                    <span class="after-vertical-border"></span>
+                </span>
+                <span class="time-filter">
+                    <span class="txt">In last </span>
+                    <span class="selected-option">1 week</span>
+                    <span class="selected-option">3 weeks</span>
+                    <span class="selected-option">1 month</span>
+                    <span class="selected-option">2 months</span>
+                    <span class="selected-option">3 months</span>
+                </span>
+            </div>
+        </div>
+        <div class="transaction-results">
+            <span class="transaction-title">Transactions</span>
+                <div class="list-actions">
+                    <div class="list-action skip"><span class="fa fa-step-forward"></span> Skip</div>
+                    <div class="list-action discard"><span class="fa fa-trash-o"></span> Discard</div>
+                    <div class="list-action retry"><span class="fa fa-repeat"></span> Retry</div>
+                    <div class="list-action delete"><span class="fa fa-plus"></span> Delete</div>
+                    <div class="list-action resume"><span class="fa fa-play"></span> Resume</div>
+                    <div class="list-action abort"><span class="fa fa-power-off"></span> Abort</div>
+                </div>
+        </div>
+        <div class="grouping" style="display: none;" flex-row>
+            <div  id="left-side-area-outer" style="display: none;">
+                <div class="grouping-title">Running</div>
+                <div class="left-side-area" id="left-side-area" flex>
+                </div>
+            </div>
+            <div id="center-side-area-outer" style="display: none;">
+                <div class="grouping-title">Waiting</div>
+                <div class="center-side-area" id="center-side-area" flex>
+                </div>
+            </div>
+            <div id="middle-side-area-outer" style="display: none;">
+                <div class="grouping-title">Ready</div>
+                <div class="middle-side-area" id="middle-side-area" flex>
+                </div>
+            </div>
+            <div id="right-side-area-outer" style="display: none;">
+                <div class="grouping-title">Failed</div>
+                <div class="right-side-area" id="right-side-area" flex>
+                </div>
+            </div>
+        </div>
+        <div class="regular" id="regular" flex>
+
+        </div>
+    </div>
+    <div class="right-pull-in">
+        <span class="fa fa-plus close pull-right" onclick="hideMe()"></span>
+        <div class="content" >
+            <ul class="tree">
+                <li><a class="Completed">Transaction 1</a>
+                    <ul>
+                        <li><a class="Running">Transaction 4</a></li>
+                        <li>
+                            <a class="Ready">Transaction 5</a>
+                            <ul>
+                                <li>
+                                    <a class="Waiting">Transaction 7</a>
+                                    <ul>
+                                        <li><a class="Ready">Transaction 8</a></li>
+                                        <li><a class="Running">Transaction 9</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="Waiting">Transaction 6</a></li>
+                                <li><a class="Running">Transaction 10</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="Running">Transaction 2</a>
+                            <ul><li><a class="Failed">Transaction 3</a></li></ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="more-info">
+                <div class="content-wrapper"><div class="key">Conversation ID</div><div class="value">aaaaa-87546-asasas-878478</div></div>
+                <div class="content-wrapper"><div class="key">Transaction ID</div><div class="value">9876-uyty-4587-cvbn</div></div>
+                <div class="content-wrapper"><div class="key">Process Name</div><div class="value">MI Process 1</div></div>
+                <div class="content-wrapper"><div class="key">Start Date</div><div class="value">23/02/2018 12:01</div></div>
+                <div class="content-wrapper"><div class="key">End Date</div><div class="value">23/02/2018 12:02</div></div>
+                <div class="content-wrapper"><div class="key">Duration</div><div class="value">1 min</div></div>
+                <div class="content-wrapper"><div class="key">Status</div><div class="value">Running</div></div>
+                <div class="content-wrapper"><div class="key">Priority</div><div class="value">HIGH</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer"></div>
+
+
+
+<!-- ========= -->
+<!-- Templates -->
+<!-- ========= -->
+<script type="text/template" id="card-template">
+    <div class="card-container-wrapper">
+        <% _.each(modelList.models,function(modelData){%>
+        <div class="card-container">
+            <div class="card-header">
+                        <span class="card-title">
+                            <span class="trn-name"><%=modelData.attributes.processName%></span>
+                            <span class="trn-id"><%=modelData.attributes.trnId%></span>
+                        </span>
+                <span class="info fa fa-info-circle"></span>
+                <span class="close fa fa-plus"></span>
+            </div>
+            <div class="card-content">
+                <div class="date-info">
+                    <div class="from-to">
+                        <span>Start : <%=modelData.attributes.startDate%></span>
+                        <span>End : <%=modelData.attributes.endDate%></span>
+                    </div>
+                    <div class="total-time">
+                        Run-time
+                        <div><%=modelData.attributes.runTime%>min</div>
+                    </div>
+                </div>
+                <div class="actions">
+                    <div class="action skip"><span class="fa fa-step-forward"></span>Skip</div>
+                    <div class="action discard"><span class="fa fa-trash-o"></span>Discard</div>
+                    <div class="action resume"><span class="fa fa-play"></span>Resume</div>
+                    <div class="action abort"><span class="fa fa-power-off"></span>Abort</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="footer-items">
+                    <span class="download-button"><span class="fa fa-download"></span> Download</span>
+                    <span class="status"><%=modelData.attributes.status%>
+                                <span class="fa fa-repeat"></span>
+                            </span>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</script>
+
+<script type="text/template" id="mini-card-template">
+<!--    <div class="card-container-wrapper">-->
+        <% _.each(this.data,function(modelData){
+
+        %>
+        <div class="card-container">
+            <div class="card-header">
+                        <span class="card-title">
+                            <span class="trn-name"><%=modelData.attributes.processName%></span>
+                            <span class="trn-id"><%=modelData.attributes.trnId%></span>
+                        </span>
+                <span class="info fa fa-info-circle"></span>
+                <!--<span class="close fa fa-plus"></span>-->
+            </div>
+            <div class="card-content">
+                <div class="date-info">
+                    <!--<div class="from-to">-->
+                        <!--<span>Start : <%=modelData.attributes.startDate%></span>-->
+                        <!--<span>End : <%=modelData.attributes.endDate%></span>-->
+                    <!--</div>-->
+                    <span class="status <%=modelData.attributes.status%>"><%=modelData.attributes.status%></span>
+                    <div class="total-time">
+                        Duration
+                        <span><%=modelData.attributes.runTime%>min</span>
+                    </div>
+                </div>
+                <!--<div class="actions">-->
+                    <!--<div class="action skip"><span class="fa fa-step-forward"></span>Skip</div>-->
+                    <!--<div class="action discard"><span class="fa fa-trash-o"></span>Discard</div>-->
+                    <!--<div class="action resume"><span class="fa fa-play"></span>Resume</div>-->
+                    <!--<div class="action abort"><span class="fa fa-power-off"></span>Abort</div>-->
+                <!--</div>-->
+            </div>
+            <!--<div class="card-footer">-->
+                <!--<div class="footer-items">-->
+                    <!--<span class="download-button"><span class="fa fa-download"></span> Download</span>-->
+                    <!--<span class="status"><%=modelData.attributes.status%>-->
+                                <!--<span class="fa fa-repeat"></span>-->
+                            <!--</span>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <% }) %>
+<!--    </div>-->
+</script>
+
+<script type="text/template" id="list-template">
+    <div class="groupDivWrapper" >
+        <div class="group-title <%-this.dataTitle!=undefined%>">
+            <%-this.dataTitle%>
+        </div>
+        <div class="groupDiv" >
+        <%_.each(this.data,function(modelData){%>
+        <div class="list-container <%-modelData.attributes.selected%>" data-cid=<%-modelData.cid%> data-model-data="<%-JSON.stringify(modelData)%>">
+            <div class="list-header">
+                <span class="list-title">
+                    <span class="list-trn-id"><%-modelData.attributes.trnId%></span>
+                </span>
+
+
+                <span class="list-info fa fa-info-circle"></span>
+
+                <span class="conversation-id">
+                    <%-modelData.attributes.conversationId%>
+                </span>
+            </div>
+            <div class="list-content">
+                <span class="list-trn-name pull-right"><%-modelData.attributes.processName%></span>
+                <span class="list-status <%-modelData.attributes.status%>"><%-modelData.attributes.status%>
+                    <!--<span class="fa fa-repeat"></span>-->
+                </span>
+                <span class="list-date-info">
+                        <span class="run-from"><%-modelData.attributes.startDate%></span>
+                        <span class="before"></span>
+                        <span class="time-taken"><%-modelData.attributes.runTime%> min</span>
+                        <span class="after"></span>
+                        <span class="run-to"><%-modelData.attributes.endDate%></span>
+                    </span>
+            </div>
+            <div class="list-footer">
+                <div class="show-more"><span class="fa fa-plus"></span>Show related transactions</div>
+                <!--<div class="list-actions">
+                    <div class="list-action skip"><span class="fa fa-step-forward"></span></div>
+                    <div class="list-action discard"><span class="fa fa-trash-o"></span></div>
+                    <div class="list-action retry"><span class="fa fa-repeat"></span></div>
+                    <div class="list-action delete"><span class="fa fa-plus"></span></div>
+                    <div class="list-action resume"><span class="fa fa-play"></span></div>
+                    <div class="list-action abort"><span class="fa fa-power-off"></span></div>
+                </div>-->
+                <div class="list-footer-items">
+                    <span class="list-download-button"><span class="fa fa-download"></span> Download</span>
+                    <span class="priority pull-right"><%-modelData.attributes.priority%></span>
+                </div>
+            </div>
+            <div class="related-trans">
+            </div>
+        </div>
+        <%})%>
+        </div>
+    </div>
+</script>
+
+<!-- ========= -->
+<!-- Libraries -->
+<!-- ========= -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js" type="text/javascript"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" type="text/javascript"></script>
+
+<!-- =========== -->
+<!--  JavaScript -->
+<!-- =========== -->
+
+<script src="js/app.js" type="application/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+.list-container {
+    background: #c0d6e4;
+    color: #0b0b0b;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 3px;
+    box-shadow: -1px 1px 2px 1px #8ea5bf;
+    position: relative;
+    margin-top: 10px;
+}
+
+span.list-title {
+    display: flex;
+    flex: 1;
+}
+
+.list-header {
+    display: flex;
+    padding: 5px;
+}
+
+span.list-info, span.list-close {
+    margin-right: 10px;
+    transition: all 0.5s ease;
+}
+
+span.list-info {
+    margin-right: 10px;
+}
+
+span.list-close {
+    transform: rotate(45deg);
+}
+
+span.list-trn-name {
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+span.list-trn-id {
+    font-size: 12px;
+    padding-top: 4px;
+    color: #616161;
+}
+span.priority {
+    margin-right: 25px;
+    border: 1px dotted;
+    padding: 2px 10px;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+
+span.list-status {
+    background: #65de65;
+    padding: 4px 8px;
+    font-size: 12px;
+    margin-right: 25px;
+}
+
+span.list-date-info {
+    margin-right: 5px;
+}
+
+.list-actions {
+    float: right;
+    display: flex;
+    /*margin-left: auto;*/
+    /*padding: 10px 10px 0 0;*/
+}
+.list-action {
+    display: inline-block;
+    background: #cc4141;
+    padding: 2px 15px;
+    font-size: 12px;
+    border: 0.5px solid #a1a1a1;
+    color: white;
+}
+
+.list-footer {
+    padding: 5px;
+    position: relative;
+}
+
+.list-action.skip, .list-action.resume, .list-action.retry{
+    background: #0081cb;
+}
+
+.list-action.skip {
+    border-radius: 5px 0 0 5px;
+}
+
+.list-action.abort {
+    border-radius: 0 5px 5px 0;
+}
+
+.list-action.delete>.fa{
+    transform:rotate(45deg);
+}
+
+span.run-from,span.run-to {
+    font-size: 12px;
+}
+
+span.time-taken:before {
+}
+
+span.before,span.after {
+    border-top: 1px solid;
+    width: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+span.list-download-button {
+    padding: 2px 10px;
+    background: #c3c3c3;
+    float: right;
+    margin-right: 5px;
+    border-radius: 2px;
+    font-size: 12px;
+}
+
+.show-more {
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+.show-more span.fa.fa-plus {
+    margin-right: 5px;
+}
+.list-container:hover {
+    box-shadow: 0 0 2px 0 black;
+    cursor: pointer;
+}
+
+.list-action:hover {
+    cursor: pointer;
+    box-shadow: 0 0 2px 0 #464545;
+}
+
+span.list-download-button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 2px 0;
+}
+span.list-status.Running {
+    background: orange;
+}
+
+span.list-status.Waiting {
+    background: yellow;
+}
+
+span.list-status.Failed {
+    background: red;
+    color: white;
+}
+span.list-status.Ready {
+    background: white;
+    color: black;
+}
+.list-container.selected {
+    box-shadow: inset 0px 0px 1px 1px green;
+}
+
+.list-container.selected .conversation-id {
+    border-top-color: green;
+}
+.false{
+    display: none;
+}
+.groupDiv {
+    overflow: auto;
+    padding: 0 5px 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.groupDivWrapper {
+    border: 1px solid #aaa;
+    padding: 5px;
+    margin: 5px 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 125px;
+}
+.group-title{
+    padding: 0 0 0 5px;
+}
+.list-footer-items {
+    display: inline;
+}
+.related-trans {
+    margin-top: 20px;
+    padding-top: 5px;
+}

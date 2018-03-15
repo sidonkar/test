@@ -1,0 +1,131 @@
+[none]{
+    display: none !important;
+}
+.aside{
+    flex: 1;
+    max-width: 15%;
+    width: 15%;
+}
+[flex-column]{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+[flex-row]{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+.search-input{
+    width: 98%;
+    padding: 5px;
+    margin: 10px 5px;
+}
+span.search {
+    margin-left: -35px;
+}
+.aside {
+    background: #e3e3e3;
+    padding: 10px;
+    margin: 10px;
+    border: .5px solid #a1a1a1;
+}
+
+.trn-type,.trn-status {
+    padding: 10px 0;
+    border-bottom: 1px solid #a1a1a1;
+}
+button.submit {
+    position: absolute;
+    bottom: 15px;
+    width: 15%;
+    height: 40px;
+    background: #0081cb;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+.search-results {
+    /*background: #e3e3e3;*/
+    /*margin: 10px;*/
+    padding: 10px;
+    border-right: 0.5px solid #a1a1a1;
+}
+.search-bar-with-options {
+    border-bottom: 1px solid #888;
+}
+
+.search-options {
+    padding: 10px 10px 20px;
+}
+span.selected-option {
+    font-size: 14px;
+    border: 1px solid #888;
+    padding: 10px;
+    border-radius: 4px;
+    color: #222;
+    background-color: #fff;
+}
+
+span.selected-option.pull-right {
+    margin: -9px 0 0;
+    border-radius:3px;
+}
+span.selected-option.view {
+    margin-right: 10px;
+}
+
+span.selected-option:hover {
+    cursor: pointer;
+}
+div.list-container-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 0 10px 10px;
+    flex: 1;
+}
+.filters {
+    overflow: auto;
+    margin-bottom: 36px;
+}
+
+.filter-title {
+    font-weight: 600;
+    font-family: Roboto;
+}
+span.input-value {
+    font-size: 14px;
+}
+.pull-right{
+    float: right;
+}
+span.transaction-title {
+    font-size: 16px;
+    display: inline-block;
+}
+.transaction-results{
+    padding: 10px 10px 0 ;
+}
+span.conversation-id {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #e3e3e3;
+    padding: 0 10px;
+    border-radius: 0 0 10px 10px;
+    border-top: 1px solid #e3e3e3;
+}
+.grouping-title {
+    padding: 10px 10px 0;
+}
+
+span.after-vertical-border {
+    padding: 15px 0;
+    border: 1px solid #444;
+    margin: 0 10px;
+}
+span.selected-option[selected] {
+    box-shadow: inset 0px 0px 10px 1px green;
+}

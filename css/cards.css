@@ -1,0 +1,187 @@
+.card-container-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    background: #e3e3e3;
+    padding: 5px;
+}
+.card-container {
+    box-shadow: -1px 1px 4px 0px #3b4b54;
+    background: #3076a54d;
+    max-width: 260px;
+    max-height: 150px;
+    font-size: 12px;
+    padding: 0 1px;
+    border-radius: 5px;
+    color: black;
+    letter-spacing: 0.5px;
+    word-spacing: 0.5px;
+    margin: 10px;
+    display: inline-block;
+    white-space: nowrap;
+    width: 260px;
+}
+
+.card-header {
+    display: flex;
+    width: 100%;
+    padding: 5px 0px;
+    border-bottom: 0.5px solid #a1a1a1;
+}
+
+span.card-title {padding-left: 5px;display: flex;flex: 1;flex-direction: column;}
+
+span.close {
+    float: right;
+    margin-right: 10px;
+    padding: 8px 0;
+    font-size: 15px;
+    transform: rotate(45deg);
+    height: 15px;
+    transition: all 1s ease;
+}
+
+span.info {
+    float: right;
+    font-style: italic;
+    padding: 8px;
+    font-size: 15px;
+}
+.card-footer {
+    border-top: 0.5px solid #a1a1a1;
+    padding: 5px 10px;
+}
+
+.status {
+    background: #65de65;
+    padding: 5px 5px;
+    display: inline-block;
+    color: black;
+    border-radius: 2px;
+    align-self: center;
+}
+
+.download-button {
+    float: right;
+    background: #c3c3c3;
+    color: black;
+    padding: 5px;
+    border-radius: 2px;
+    box-shadow: 0px 0px 1px 0px #a9a9a9;
+}
+.action-primary {
+    display: inline-block;
+}
+
+.date-info {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    font-size: 12px;
+}
+.actions {
+    padding: 0 4px 5px 4px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+.actions>.action {
+    flex: 1;
+    background: #cc4141;
+    text-align: center;
+    margin: 0;
+    padding: 4px 2px;
+    color: white;
+    box-shadow: 0px 0px 1px 0px #deecf7;
+}
+.download-button:hover {
+    cursor: pointer;
+}
+.action.skip,.action.resume {
+    background: #0081cb;
+}
+
+.action:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 2px 0px #000000;
+}
+
+.download-button:hover {
+    box-shadow: 0 0 1px 1px #848484;
+}
+
+.info:hover, .close:hover {cursor: pointer;}
+
+span.trn-id {
+    color: #616161;
+}
+
+span.trn-name {
+    font-size: 14px;
+}
+.from-to {
+    flex-direction: column;
+    display: flex;
+    flex: 1;
+}
+
+.total-time {
+    margin-left: auto;
+    align-self: center;
+    color: #616161;
+}
+
+.total-time>div {
+    font-size: 12px;
+    color: #010101;
+    text-align: center;
+}
+.action.skip {
+    border-radius: 7px 0 0 7px;
+}
+
+.action.abort {
+    border-radius: 0 7px 7px 0;
+}
+
+.action>.fa {
+    padding-right: 1px;
+}
+span.close:hover {
+    transform: rotate(135deg);
+}
+span.status:hover {
+    cursor: pointer;
+}
+.card-container:hover {
+    cursor: pointer;
+    box-shadow: -2px 2px 2px 1px #afafaf;
+}
+span.info, span.close {
+    color: #555;
+}
+
+.Completed{
+    background: #65de65;
+}
+
+.Running {
+    background: orange;
+}
+
+.Waiting {
+    background: yellow;
+}
+
+.Failed {
+    background: red;
+    color: white;
+}
+.Ready {
+    background: white;
+    color: black;
+}
+.total-time>span {
+    color: #000;
+}
+
+
